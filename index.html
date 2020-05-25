@@ -40,6 +40,9 @@ margin:0;
 
 <body>
 <div style="margin-top:100px"></div>
+<div class="container" dir="ltr">
+    <h1 id="gregorian"></h1>
+</div>
 <div class="container" dir="rtl">
     <h2 class="arabic">التاريخ الهجري اليوم</h2>
     <h1 id="arabic" class="arabic"></h1>
@@ -50,7 +53,22 @@ margin:0;
 </div>
 </body>
 <script type="text/javascript">
-
+var GREG_MONTHS = [
+    'JAN',
+    'FEB',
+    'MAR',
+    'APR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AUG',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DEC'
+];
+var now = new Date();
+document.querySelector("h1#gregorian").innerHTML = now.getFullYear() + '-' + GREG_MONTHS[now.getMonth()-1] + '-' + now.getDate();
 
 var MONTHS_EN = [
     'Muḥarram',
@@ -258,7 +276,7 @@ var UMMALQURA_DATA = [28607, 28636, 28665, 28695, 28724, 28754, 28783, 28813, 28
     79990
     ];
 
-var today = HijriDate(new Date());
+var today = HijriDate(now);
 document.getElementById("english").innerHTML = today[2] +' '+ MONTHS_EN[today[1]-1] +' '+ today[0];
 document.getElementById("arabic").innerHTML = today[2] +' '+ MONTHS_AR[today[1]-1] +' '+ today[0];
 
